@@ -1,4 +1,4 @@
-# SimpleStatisticsArduino. <a href='https://ko-fi.com/I2I012UF3' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://az743702.vo.msecnd.net/cdn/kofi1.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
+# Statisticsino &nbsp;&nbsp;&nbsp;&nbsp;<a href='https://ko-fi.com/I2I012UF3' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://az743702.vo.msecnd.net/cdn/kofi1.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
 
 Library to calculate basic statistics in arduino.
 
@@ -15,6 +15,12 @@ Statistics2 st = Statistics2();
 ```
 
 *Statistics2* is used for two variables
+
+```c
+Error st = Error();
+```
+
+*Error* useful to measure estiamtion error
 
 ### Statistics - Methods 
 
@@ -59,14 +65,49 @@ double center();
 Calculate center = (maximun-minimun)/2
 
 ```c
-double center(); 
-```
-Calculate center = (maximun-minimun)/2
-
-```c
 double sum();
 ```
 Aproximation to sum of all values added
+
+```c
+double minMaxNormalization(double value);
+```
+Normalizate value using minmax normalization 
+
+```c
+double meanNormalization(double value);
+```
+Normalizate value using mean normalization 
+
+```c
+double standardization(double value);
+```
+Standardization of value  
+
+```c
+double rootMeanSquare();
+```
+Root mean square  
+
+```c
+double coefficientOfVariation();
+```
+Coefficient of variation  
+
+```c
+double indexOfDispersion();
+```
+Index Of Dispersion  
+
+```c
+double zeroCrossing();
+```
+Zero crossing  
+
+```c
+double zeroCrossingRate();
+```
+Zero crossing Rate = zeroCrossing()/samples() 
 
 ```c
 void reset();  
@@ -115,7 +156,33 @@ values[1] = b;
 ```c
 void centroid(double values[]);
 ```
-Calculate centroid. [centerX(), centerY()];
+Calculate centroid.  
+values[0] = stX.center();  
+values[1] = stY.center();  
+
+```c
+void centerOfGravity(double values[]);
+```
+Calculate center of gravity  
+values[0] = stX.mean();  
+values[1] = stY.mean();  
+
+```c
+void centerOfMassXY();
+```
+Calculate center of mass. Use Y as mass and X as distance  
+sumXY()/stY.sum();  
+
+```c
+void centerOfMassXY();
+```
+Calculate center of mass. Use X as mass and Y as distance  
+sumXY()/stX.sum();  
+
+```c
+void sumXY();
+```
+Aproximation of summation X*Y  
 
 ```c
 double samples(); 
@@ -128,61 +195,58 @@ void reset();
 Reset values
 
 ```c
-double meanX();  
+Statistics stX;  
 ```
-Mean of variable X
+Statistics object for X values  
 
 ```c
-double meanY();  
+Statistics sty;  
 ```
-Mean of variable Y
+Statistics object for Y values  
+
+### Error - Methods
 
 ```c
-double varX(); 
+void add(int ey, int y);  
 ```
-Variance of variable X  
+Learns one example.
+* ey: value of estimated Y
+* y: value of Y  
+
+Return abs(ey-y)
+<br>
 
 ```c
-double varY(); 
+double RMSE();  
 ```
-Variance of variable Y  
+Return Root mean squared error  
+<br>
 
 ```c
-double stdX();  
+double MSE();  
 ```
-Standard deviation of variable X  
+Return Mean squared error  
+<br>
 
 ```c
-double stdY();  
+double MAE();  
 ```
-Standard deviation of variable Y  
+Return Mean absolute error   
+<br>
 
 ```c
-double minimumX(); 
+double total();  
 ```
-Minimun value of variable X  
+Return aprox. to sum of all error  
+<br>
 
 ```c
-double minimumY(); 
+void reset();  
 ```
-Minimun value of variable Y  
+Reset values. Delete all values  
+<br>
 
 ```c
-double maximumX(); 
+void samples();
 ```
-Maximun value of variable X  
-
-```c
-double maximumY(); 
-```
-Maximun value of variable Y  
-
-```c
-double sumX();
-```
-Aproximation to sum of all values of variable X 
-
-```c
-double sumX();
-```
-Aproximation to sum of all values of variable Y
+Return number of samples used
