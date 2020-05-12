@@ -13,31 +13,24 @@
 
 class Statistics2 {
     public:
+        Statistics stX = Statistics();
+        Statistics stY = Statistics();
         void add(double x, double y);
         double correlation();
         double pearsonCorrelation();
         double spearmanCorrelation(); 
         double covar();
         double calculateLinearRegression(double x);
+        double errorLinearRegression(double x, double y);
         void parametersLinearRegression(double values[]);
         void centroid(double values[]);
+        double centerOfGravity(double values[]);
+        double centerOfMassXY(); //y Mass x distance
+        double centerOfMassYX(); //x Mass y distance
+        double sumXY(); //aprox
         double samples();
         void reset();
-        double meanX();
-        double varX();
-        double stdX();
-        double minimumX();
-        double maximumX();
-        double sumX();
-        double meanY();
-        double varY();
-        double stdY();
-        double minimumY();
-        double maximumY();
-        double sumY();
     private:
-        Statistics stX = Statistics();
-        Statistics stY = Statistics();
         double meanXY = 0;
         double covarXY = 0;
         double n = 0;
