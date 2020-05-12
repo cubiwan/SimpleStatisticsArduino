@@ -17,13 +17,22 @@ void Statistics::add(double value){
         }
         if(maxValue < value){
             maxValue = value;
-        }
+        }        
     }
     
     n++;
     meanValue = meanValue + ((value-meanValue)/n);
-    meanValue2 = meanValue2 + (((value*value)-meanValue2)/n);    
+    value *= value; // value ^ 2
+    meanValue2 = meanValue2 + ((value-meanValue2)/n);    
+    
     varValue = meanValue2 - (meanValue*meanValue);
+    lastValue = value;
+
+    if(lastValue > 0 && value < 0){
+        zc++;
+    } else if(lastValue < 0 && value > 0){
+        zc++;
+    }
 }
 
 double Statistics::samples(){
@@ -58,6 +67,38 @@ double Statistics::sum(){ //aprox.
     return meanValue*n;
 }
 
+double Statistics::minMaxNormalization(double value){ 
+    return (value - minValue) / (maxValue - minValue);        
+}
+
+double Statistics::meanNormalization(double value){ 
+    return (value - meanValue) / (maxValue - minValue);        
+}
+
+double Statistics::standardization(double value){ //Z-score Normalization
+    return (value - meanValue) / std();        
+}
+
+double Statistics::rootMeanSquare(){
+    return sqrt(meanValue2);
+}
+
+double Statistics::coefficientOfVariation(){
+    return std()/meanValue;
+}
+
+double Statistics::indexOfDispersion(){
+    return varValue/meanValue;
+}
+
+double Statistics::zeroCrossing(){
+    return zc;
+}
+
+double Statistics::zeroCrossingRate(){
+    return zc/n;
+}
+
 void Statistics::reset(){
     meanValue = 0;
     meanValue2 = 0;
@@ -66,4 +107,3 @@ void Statistics::reset(){
     minValue = 0;
     maxValue = 0;
 }
-
