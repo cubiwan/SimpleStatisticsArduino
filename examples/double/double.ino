@@ -2,7 +2,7 @@
 
 Statistics2 st = Statistics2();
 
-double values[3];
+double values[2];
 
 void setup() {
     Serial.begin(9600);     
@@ -30,8 +30,15 @@ void loop() {
     Serial.print("Covar: ");
     Serial.println(st.covar());
 
-    Serial.println("Reset");
-    lr.reset();
+    Serial.println("Centroid");
+    st.centroid(values);
+    Serial.print("X: ");
+    Serial.print(values[0]);
+    Serial.print(" Y: ");
+    Serial.println(values[1]);
 
+    Serial.println("Reset");
+    st.reset();
+    
     delay(5000);
 }
