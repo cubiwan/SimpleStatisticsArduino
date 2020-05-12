@@ -7,6 +7,7 @@
 #######################################
 Statistics KEYWORD1
 Statistics2 KEYWORD1
+Error KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
@@ -20,27 +21,33 @@ minimum KEYWORD2
 maximum KEYWORD2
 center KEYWORD2
 sum KEYWORD2
+minMaxNormalization KEYWORD2
+meanNormalization KEYWORD2
+standardization KEYWORD2
+rootMeanSquare KEYWORD2
+coefficientOfVariation KEYWORD2
+indexOfDispersion KEYWORD2
+zeroCrossing KEYWORD2
+zeroCrossingRate KEYWORD2
 reset KEYWORD2
+stX KEYWORD2
+stY KEYWORD2
 correlation KEYWORD2
 pearsonCorrelation KEYWORD2
 spearmanCorrelation KEYWORD2
-mean KEYWORD2
 covar KEYWORD2
-centroid KEYWORD2
-parametersLinearRegression KEYWORD2
 calculateLinearRegression KEYWORD2
-meanX KEYWORD2
-varX KEYWORD2
-stdX KEYWORD2
-minimumX KEYWORD2
-maximumX KEYWORD2
-sumX KEYWORD2
-meanY KEYWORD2
-varY KEYWORD2
-stdY KEYWORD2
-minimumY KEYWORD2
-maximumY KEYWORD2
-sumY KEYWORD2
+errorLinearRegression KEYWORD2
+parametersLinearRegression KEYWORD2
+centroid KEYWORD2
+centerOfGravity KEYWORD2
+centerOfMassXY KEYWORD2
+centerOfMassYX KEYWORD2
+sumXY KEYWORD2
+RMSE KEYWORD2
+MSE KEYWORD2
+MAE KEYWORD2
+total KEYWORD2
 
 #######################################
 # Constants (LITERAL1)
