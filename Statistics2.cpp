@@ -8,7 +8,7 @@ void Statistics2::add(double x, double y){
     stY.add(y);
 
     meanXY = meanXY + (((x*y)-meanXY)/n);
-    covarXY = meanXY - (meanX()*meanY());
+    covarXY = meanXY - (stX.mean()*stY.mean());
 }
 
 double Statistics2::correlation() {
@@ -41,21 +41,40 @@ void Statistics2::centroid(double values[]){
     values[1] = stY.center();
 }
 
-
 double Statistics2::calculateLinearRegression(double x) {
-    double m = covarXY / varX();
-    double b = meanY()-(m*meanX());
-
+    double m = covarXY / stX.var();
+    double b = stY.mean()-(m*stX.mean());
     return (m*x) + b;
 }
 
+double Statistics2::errorLinearRegression(double x, double y){
+    return y - calculateLinearRegression(x);
+}
+
 void Statistics2::parametersLinearRegression(double values[]){
-    values[0] = covarXY / varX();
-    values[1] = meanY()-(m*meanX());
+    values[0] = covarXY / stX.var();
+    values[1] = stY.mean()-(values[0]*stX.mean());
 }
 
 double Statistics2::samples(){
     return n;
+}
+
+double Statistics2::sumXY(){ //aprox.
+    return meanXY * n;
+}
+
+double Statistics2::centerOfGravity(double values[]){
+    values[0] = stX.mean();
+    values[1] = stY.mean();
+}
+
+double Statistics2::centerOfMassXY(){ //y Mass x distance
+    return sumXY()/stY.sum();
+}
+
+double Statistics2::centerOfMassYX(){ //x Mass y distance
+    return sumXY()/stX.sum();
 }
 
 void Statistics2::reset(){
@@ -64,54 +83,4 @@ void Statistics2::reset(){
     meanXY = 0;
     covarXY = 0;
     n = 0;
-}
-
-//X
-double Statistics2::meanX(){
-    return stX.mean();
-}
-
-double Statistics2::varX(){
-    return stX.var();
-}
-
-double Statistics2::stdX(){
-    return sqrt(stX.var());
-}
-
-double Statistics2::minimumX(){
-    return stX.minimum();
-}
-
-double Statistics2::maximumX(){
-    return stX.maximum();
-}
-
-double Statistics2::sumX(){
-    return stX.sum();
-}
-
-//Y
-double Statistics2::meanY(){
-    return stY.mean();
-}
-
-double Statistics2::varY(){
-    return stY.var();
-}
-
-double Statistics2::stdY(){
-    return sqrt(stY.var());
-}
-
-double Statistics2::minimumY(){
-    return stY.minimum();
-}
-
-double Statistics2::maximumY(){
-    return stY.maximum();
-}
-
-double Statistics2::sumY(){ //aprox.
-    return stY.sum();
 }
