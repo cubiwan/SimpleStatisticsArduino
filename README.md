@@ -82,7 +82,7 @@ Normalizate value using mean normalization
 ```c
 double standardization(double value);
 ```
-Standardization of value  
+Standardization of value (Z-score)
 
 ```c
 double rootMeanSquare();
