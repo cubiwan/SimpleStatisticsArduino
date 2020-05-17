@@ -24,6 +24,8 @@ class Statistics {
         double meanNormalization(double value);
         double standardization(double value);
         double rootMeanSquare();
+        double geometricMean();
+        double harmonicMean();
         double coefficientOfVariation();
         double indexOfDispersion();
         double zeroCrossing();
@@ -32,6 +34,7 @@ class Statistics {
     private:
         double meanValue = 0;
         double meanValue2 = 0;
+        double meanLnValue = 0;
         double lastValue = 0;
         double varValue = 0;
         double n = 0;
