@@ -25,6 +25,8 @@ minMaxNormalization KEYWORD2
 meanNormalization KEYWORD2
 standardization KEYWORD2
 rootMeanSquare KEYWORD2
+harmonicMean KEYWORD2
+geometricMean KEYWORD2
 coefficientOfVariation KEYWORD2
 indexOfDispersion KEYWORD2
 zeroCrossing KEYWORD2
