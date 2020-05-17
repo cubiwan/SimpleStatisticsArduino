@@ -90,6 +90,16 @@ double rootMeanSquare();
 Root mean square  
 
 ```c
+double geometricMean();
+```
+Geometric mean 
+
+```c
+double harmonicMean();
+```
+Harmonic mean
+
+```c
 double coefficientOfVariation();
 ```
 Coefficient of variation  
